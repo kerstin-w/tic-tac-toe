@@ -39,6 +39,16 @@ class Board:
         """
         return int((position - 1) % 3)
 
+    def is_field_free(self, move):
+        """
+        Check if the choosen field is not occupied
+        """
+        row = self.get_row_index(move)
+        column = self.get_col_index(move)
+        if not isinstance(self.board[row][column], int):
+            return False
+        return True
+
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
@@ -110,15 +120,29 @@ class Game:
     def get_human_player_move(self):
         """
         Get move from human player.
+        Afterwards, check if the move can be returned,
+        or if the field is taken.
         """
-        move = int(input("Enter your move: "))
+        while True:
+            move = int(input("Enter your move: "))
+            if self.board.is_field_free(move):
+                break
+            else:
+                print(
+                    "\nField is taken! Please choose another one.\n")
+                print(self.board.board)
         return move
 
     def get_computer_move(self):
         """
         Returns a random move for the computer.
+        Afterwards, check if the move can be returned,
+        or if the field is taken.
         """
-        move = random.randint(1, 9)
+        while True:
+            move = random.randint(1, 9)
+            if self.board.is_field_free(move):
+                break
         return move
 
 
