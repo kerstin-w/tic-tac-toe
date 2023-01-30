@@ -19,6 +19,26 @@ class Board:
             print("|       |       |       |")
             print("--------+-------+--------")
 
+    def make_move(self, position, player):
+        """
+        Add current move to the grid
+        """
+        row = self.get_row_index(position)
+        column = self.get_col_index(position)
+        self.board[row][column] = player
+
+    def get_row_index(self, position):
+        """
+        Convert user input to row in the grid
+        """
+        return int((position - 1) / 3)
+
+    def get_col_index(self, position):
+        """
+        Convert user input to cell in the grid
+        """
+        return int((position - 1) % 3)
+
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
@@ -78,11 +98,13 @@ class Game:
             print(f"\n{self.player1}! Your turn!\n")
             position = self.get_human_player_move()
         elif player == self.player2:
+            print(f"\n{self.player2}! Player 2's turn!\n")
             if self.is_computer_player:
-                print(f"\n{self.player2}! Player 2's turn!\n")
                 print("Computer is thinking\n")
             else:
-                print(f"\n{self.player2}! Player 2's turn!\n")
+                position = self.get_human_player_move()
+        self.board.make_move(position, player)
+        self.board.display_board()
 
     def get_human_player_move(self):
         """
