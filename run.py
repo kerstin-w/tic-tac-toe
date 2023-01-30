@@ -1,5 +1,22 @@
 import random
 import os
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open("tictactoe")
+
+leaderboard = SHEET.worksheet("leaderboard")
+
+data = leaderboard.get_all_values()
 
 
 class Board:
@@ -88,6 +105,9 @@ class Board:
             return True
 
     def reset_board(self):
+        """
+        Reset the board for a new round of the game
+        """
         Board.__init__(self)
 
 
@@ -127,6 +147,7 @@ class Game:
         Start the game with asking user to play against a computer or
         a human player.
         """
+        print(data)
         self.is_computer_player = self.choose_player()
         print(f"Your are Player 1 and your symbol is {self.player1}.\n")
         print(f"Player2's symbole is {self.player2}.\n")
@@ -186,7 +207,7 @@ class Game:
         while True:
             try:
                 move = int(input("Enter your move: "))
-                if move < 10:
+                if move > 0 and move < 10:
                     if self.board.is_field_free(move):
                         break
                     print("Field is taken! Please choose another one.\n")
