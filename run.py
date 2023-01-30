@@ -76,12 +76,21 @@ class Game:
         """
         if player == self.player1:
             print(f"\n{self.player1}! Your turn!\n")
+            position = self.get_human_player_move()
         elif player == self.player2:
             if self.is_computer_player:
                 print(f"\n{self.player2}! Player 2's turn!\n")
                 print("Computer is thinking\n")
             else:
                 print(f"\n{self.player2}! Player 2's turn!\n")
+
+    def get_human_player_move(self):
+        """
+        Get move from human player
+        """
+        move = int(input("Enter your move: "))
+        print(move)
+        return move
 
 
 if __name__ == "__main__":
