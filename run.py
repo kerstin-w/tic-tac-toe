@@ -247,18 +247,18 @@ class Game:
         """
         self.clear()
         self.round_count += 1
-        while self.round_count < 3:
-            print(
-                f"\tPlayer 1 = {self.score_player1}\n"
-                f"\n\tPlayer 2 = {self.score_player2}"
-            )
-            print(self.round_count)
+        if self.round_count == 3:
+            return self.game_over()
+        print(
+            f"\tPlayer 1 = {self.score_player1}\n"
+            f"\n\tPlayer 2 = {self.score_player2}"
+        )
+        print(self.round_count)
 
-            self.board.reset_board()
-            self.board.display_board()
-            player = self.random_first_player()
-            self.play_game(player)
-        self.game_over()
+        self.board.reset_board()
+        self.board.display_board()
+        player = self.random_first_player()
+        self.play_game(player)
 
     def clear(self):
         """
@@ -270,7 +270,6 @@ class Game:
         """
         End of the game. Show final result.
         """
-        self.clear()
         print(
             f"Game Over.\nPlayer 1 = {self.score_player1} - Player 2 = {self.score_player2}"
         )
