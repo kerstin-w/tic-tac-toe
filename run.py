@@ -101,6 +101,7 @@ class Game:
             print(f"\n{self.player2}! Player 2's turn!\n")
             if self.is_computer_player:
                 print("Computer is thinking\n")
+                position = self.get_computer_move()
             else:
                 position = self.get_human_player_move()
         self.board.make_move(position, player)
@@ -108,10 +109,16 @@ class Game:
 
     def get_human_player_move(self):
         """
-        Get move from human player
+        Get move from human player.
         """
         move = int(input("Enter your move: "))
-        print(move)
+        return move
+
+    def get_computer_move(self):
+        """
+        Returns a random move for the computer.
+        """
+        move = random.randint(1, 9)
         return move
 
 
