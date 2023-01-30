@@ -1,4 +1,5 @@
 import random
+import os
 
 
 class Board:
@@ -86,6 +87,9 @@ class Board:
         ):
             return True
 
+    def reset_board(self):
+        Board.__init__(self)
+
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
@@ -96,6 +100,9 @@ class Game:
         self.player2 = "O"
         self.board = Board()
         self.is_computer_player = False
+        self.round_count = 1
+        self.score_player1 = 0
+        self.score_player2 = 0
 
     def choose_player(self):
         """
@@ -158,11 +165,17 @@ class Game:
             self.board.display_board()
 
             if self.board.check_winner(player):
+                if player == self.player1:
+                    self.score_player1 += 1
+                else:
+                    self.score_player2 += 1
                 print(f"\nYeah! {player} won! Congrats!\n")
+                return self.reset_game()
             else:
                 player = self.switch_player(player)
         if num == 0:
             print("Game over! It's a tie!")
+            return self.reset_game()
 
     def get_human_player_move(self):
         """
@@ -176,9 +189,7 @@ class Game:
                 if move < 10:
                     if self.board.is_field_free(move):
                         break
-                    else:
-                        print(
-                            "Field is taken! Please choose another one.\n")
+                    print("Field is taken! Please choose another one.\n")
                 else:
                     print("\nPlease enter a valid number between 1-9.\n")
             except ValueError:
@@ -203,6 +214,40 @@ class Game:
         """
         player = self.player1 if player == self.player2 else self.player2
         return player
+
+    def reset_game(self):
+        """
+        Reset the game to play another round
+        """
+        self.clear()
+        self.round_count += 1
+        while self.round_count < 6:
+            print(
+                f"\tPlayer 1 = {self.score_player1}\n"
+                f"\n\tPlayer 2 = {self.score_player2}"
+            )
+            print(self.round_count)
+
+            self.board.reset_board()
+            self.board.display_board()
+            player = self.random_first_player()
+            self.play_game(player)
+        self.game_over()
+
+    def clear(self):
+        """
+        Clear terminal
+        """
+        os.system("cls" if os.name == "nt" else "clear")
+
+    def game_over(self):
+        """
+        End of the game. Show final result.
+        """
+        self.clear()
+        print(
+            f"Game Over.\nPlayer 1 = {self.score_player1} - Player 2 = {self.score_player2}"
+        )
 
 
 if __name__ == "__main__":
