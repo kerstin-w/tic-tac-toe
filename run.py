@@ -171,12 +171,18 @@ class Game:
         or if the field is taken.
         """
         while True:
-            move = int(input("Enter your move: "))
-            if self.board.is_field_free(move):
-                break
-            else:
-                print(
-                    "\nField is taken! Please choose another one.\n")
+            try:
+                move = int(input("Enter your move: "))
+                if move < 10:
+                    if self.board.is_field_free(move):
+                        break
+                    else:
+                        print(
+                            "Field is taken! Please choose another one.\n")
+                else:
+                    print("\nPlease enter a valid number between 1-9.\n")
+            except ValueError:
+                print("\nPlease enter a valid number between 1-9.\n")
         return move
 
     def get_computer_move(self):
