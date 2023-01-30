@@ -1,7 +1,13 @@
 import random
 import os
+import datetime
 import gspread
 from google.oauth2.service_account import Credentials
+
+
+# Import date from datetime
+date = datetime.datetime.today()
+today_date = date.strftime("%d/%m/%Y")
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -147,7 +153,6 @@ class Game:
         Start the game with asking user to play against a computer or
         a human player.
         """
-        print(data)
         self.is_computer_player = self.choose_player()
         print(f"Your are Player 1 and your symbol is {self.player1}.\n")
         print(f"Player2's symbole is {self.player2}.\n")
@@ -242,7 +247,7 @@ class Game:
         """
         self.clear()
         self.round_count += 1
-        while self.round_count < 6:
+        while self.round_count < 3:
             print(
                 f"\tPlayer 1 = {self.score_player1}\n"
                 f"\n\tPlayer 2 = {self.score_player2}"
@@ -269,6 +274,25 @@ class Game:
         print(
             f"Game Over.\nPlayer 1 = {self.score_player1} - Player 2 = {self.score_player2}"
         )
+        if self.is_computer_player:
+            name = input("Player please enter your name")
+            score = self.score_player1
+        else:
+            name = input("Player please enter your name")
+            score = max(self.score_player1, self.score_player2)
+        self.update_worksheet(name, score)
+        self.display_leaderboard()
+
+    def update_worksheet(self, name, score):
+        """
+        Update a new row in the Tic Tact Toe worksheet
+        This updates a new row with the name, score and date.
+        """
+        print("Updating Leaderboard...\n")
+        leaderboard.append_row(
+            [name, score, today_date])
+        time.sleep(2)
+        print("Leaderboard Update successful.\n")
 
 
 if __name__ == "__main__":
