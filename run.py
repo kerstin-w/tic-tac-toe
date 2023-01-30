@@ -1,3 +1,6 @@
+import random
+
+
 class Board:
     """Represents the board for the Tic-Tac-Toe game."""
 
@@ -51,10 +54,20 @@ class Game:
         a human player.
         """
         self.is_computer_player = self.choose_player()
-        print(self.is_computer_player)
         print(f"Your are Player 1 and your symbol is {self.player1}.\n")
         print(f"Player2's symbole is {self.player2}.\n")
+        player = self.random_first_player()
+        print("Who goes first? Let's flip a coin.\n")
+        print(".....\n")
+        print(f"\n{player} goes first!\n")
         self.board.display_board()
+
+    def random_first_player(self):
+        """
+        Get a random first player for the first move in the game
+        """
+        player = random.choice([self.player1, self.player2])
+        return player
 
 
 if __name__ == "__main__":
