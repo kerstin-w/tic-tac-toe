@@ -104,18 +104,22 @@ class Game:
         """
         Run game
         """
-        if player == self.player1:
-            print(f"\n{self.player1}! Your turn!\n")
-            position = self.get_human_player_move()
-        elif player == self.player2:
-            print(f"\n{self.player2}! Player 2's turn!\n")
-            if self.is_computer_player:
-                print("Computer is thinking\n")
-                position = self.get_computer_move()
-            else:
+        num = 9
+        while num > 0:
+            num -= 1
+            if player == self.player1:
+                print(f"\n{self.player1}! Your turn!\n")
                 position = self.get_human_player_move()
-        self.board.make_move(position, player)
-        self.board.display_board()
+            elif player == self.player2:
+                print(f"\n{self.player2}! Player 2's turn!\n")
+                if self.is_computer_player:
+                    print("Computer is thinking\n")
+                    position = self.get_computer_move()
+                else:
+                    position = self.get_human_player_move()
+            self.board.make_move(position, player)
+            self.board.display_board()
+            player = self.switch_player(player)
 
     def get_human_player_move(self):
         """
@@ -130,7 +134,6 @@ class Game:
             else:
                 print(
                     "\nField is taken! Please choose another one.\n")
-                print(self.board.board)
         return move
 
     def get_computer_move(self):
@@ -144,6 +147,13 @@ class Game:
             if self.board.is_field_free(move):
                 break
         return move
+
+    def switch_player(self, player):
+        """
+        Switch current player to get the move from the next player
+        """
+        player = self.player1 if player == self.player2 else self.player2
+        return player
 
 
 if __name__ == "__main__":
