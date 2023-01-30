@@ -49,6 +49,43 @@ class Board:
             return False
         return True
 
+    def check_winner(self, player):
+        """
+        Check for a winner in rows, columns and diagonals.
+        Also check if the grid is full and there is a tie.
+        """
+        # check in rows
+        for row in self.board:
+            board_items = set(row)
+            if len(board_items) == 1 and (not isinstance(board_items, int)):
+                return True
+
+        # check in columns
+        for i in range(3):
+            if (
+                self.board[0][i]
+                == self.board[1][i]
+                == self.board[2][i]
+                == player
+            ):
+                return True
+
+        # check in diagonals
+        if (
+            self.board[0][0]
+            == self.board[1][1]
+            == self.board[2][2]
+            == player
+        ):
+            return True
+        elif (
+            self.board[0][2]
+            == self.board[1][1]
+            == self.board[2][0]
+            == player
+        ):
+            return True
+
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
@@ -119,7 +156,13 @@ class Game:
                     position = self.get_human_player_move()
             self.board.make_move(position, player)
             self.board.display_board()
-            player = self.switch_player(player)
+
+            if self.board.check_winner(player):
+                print(f"\nYeah! {player} won! Congrats!\n")
+            else:
+                player = self.switch_player(player)
+        if num == 0:
+            print("Game over! It's a tie!")
 
     def get_human_player_move(self):
         """
