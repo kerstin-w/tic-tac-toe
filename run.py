@@ -61,6 +61,7 @@ class Game:
         print(".....\n")
         print(f"\n{player} goes first!\n")
         self.board.display_board()
+        self.play_game(player)
 
     def random_first_player(self):
         """
@@ -68,6 +69,19 @@ class Game:
         """
         player = random.choice([self.player1, self.player2])
         return player
+
+    def play_game(self, player):
+        """
+        Run game
+        """
+        if player == self.player1:
+            print(f"\n{self.player1}! Your turn!\n")
+        elif player == self.player2:
+            if self.is_computer_player:
+                print(f"\n{self.player2}! Player 2's turn!\n")
+                print("Computer is thinking\n")
+            else:
+                print(f"\n{self.player2}! Player 2's turn!\n")
 
 
 if __name__ == "__main__":
