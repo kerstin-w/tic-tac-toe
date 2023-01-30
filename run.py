@@ -1,5 +1,5 @@
 class Board:
-    """Represents the board for the Tic-Tac-Toe game"""
+    """Represents the board for the Tic-Tac-Toe game."""
 
     def __init__(self):
         """Initializes a new board."""
@@ -45,6 +45,17 @@ class Game:
         else:
             return False
 
+    def start_game(self):
+        """
+        Start the game with asking user to play against a computer or
+        a human player.
+        """
+        self.is_computer_player = self.choose_player()
+        print(self.is_computer_player)
+        print(f"Your are Player 1 and your symbol is {self.player1}.\n")
+        print(f"Player2's symbole is {self.player2}.\n")
+        self.board.display_board()
+
 
 if __name__ == "__main__":
-    Game().choose_player()
+    Game().start_game()
