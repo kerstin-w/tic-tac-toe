@@ -125,7 +125,7 @@ class Game:
     def choose_player(self):
         """
         Ask user if the game is going to be played against the computer,
-        or against a second human player
+        or against a second human player. Return True or False.
         """
         player = ""
         print("Would you like to play against a friend or the computer?\n")
@@ -144,6 +144,7 @@ class Game:
         """
         Start the game with asking user to play against a computer or
         a human player.
+        Selecte a a random first player and call play_game.
         """
         self.is_computer_player = self.choose_player()
         print(f"Your are Player 1 and your symbol is {self.player1}.\n")
@@ -266,8 +267,14 @@ class Game:
         End of the game. Show final result.
         """
         print(
-            f"Game Over.\nPlayer 1 = {self.score_player1} - Player 2 = {self.score_player2}"
+            f"{self.player1} = {self.score_player1} - {self.player2} = {self.score_player2}"
         )
+        winner = (
+            f"{self.player1}"
+            if self.score_player1 > self.score_player2
+            else f"{self.player2}"
+        )
+        print(f"Game Over.\n{winner} won! Congratulations")
         if self.is_computer_player:
             score = self.score_player1
         else:
