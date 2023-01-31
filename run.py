@@ -6,6 +6,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from game_extras import GameColours as C
 from game_extras import typewriter
+import game_art
 
 
 # Import date from datetime
@@ -151,6 +152,8 @@ class Game:
         a human player.
         Selecte a a random first player and call play_game.
         """
+        print(game_art.LOGO)
+        print(game_art.GAME_RULES)
         self.is_computer_player = self.choose_player()
         print(
             C.RE + f"\nYour are Player 1 and your symbol is {self.player1}.\n")
