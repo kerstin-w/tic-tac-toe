@@ -199,6 +199,7 @@ class Game:
                 return self.reset_game()
             player = self.switch_player(player)
         if num == 0:
+            time.sleep(2)
             print(C.Y + "Game over! It's a tie!")
             return self.reset_game()
 
@@ -296,13 +297,15 @@ class Game:
         self.display_score()
         print(game_art.GAME_OVER)
         if self.score_player1 == self.score_player2:
-            return print("It is a tie. Game Over!")
-        print(f"{winner} won! Congratulations")
+            return print(C.Y + "It is a tie. Thank you for playing!")
+        print(f"{winner} won! Congratulations!\n")
         if self.is_computer_player:
             score = self.score_player1
         else:
             score = max(self.score_player1, self.score_player2)
-        name = input("Player please enter your name: ")
+        name = input(
+            C.Y +
+            f"Make your mark on our leaderboard. {winner} enter your name: ")
         self.update_worksheet(name, score)
         self.display_leaderboard()
 
@@ -311,10 +314,10 @@ class Game:
         Update a new row in the Tic Tact Toe worksheet
         This updates a new row with the name, score and date.
         """
-        print("Updating Leaderboard...\n")
+        typewriter("\nUpdating Leaderboard...")
         leaderboard.append_row(
             [name, score, today_date])
-        print("Leaderboard Update successful.\n")
+        typewriter("\nLeaderboard Update successful.\n")
 
     def display_leaderboard(self):
         """
