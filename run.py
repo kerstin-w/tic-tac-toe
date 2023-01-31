@@ -4,6 +4,10 @@ import datetime
 import gspread
 from google.oauth2.service_account import Credentials
 
+import colorama
+from colorama import Fore
+colorama.init(autoreset=True)
+
 
 # Import date from datetime
 date = datetime.datetime.today()
@@ -164,7 +168,13 @@ class Game:
 
     def play_game(self, player):
         """
-        Run game
+        Run the game loop.
+        Request either the human player or the computer to make a move.
+        Display the respective move on the board.
+        Afterwards, verify if a move has led to a win and,
+        if necessary, update the score and start a new game round.
+        If not, change the player for the following move.
+        Start a new round once there are no more moves left.
         """
         num = 9
         while num > 0:
