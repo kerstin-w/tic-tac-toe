@@ -12,7 +12,9 @@ class GameColours():
     """
     G = Fore.GREEN
     R = Fore.RED
+    M = Fore.MAGENTA
     Y = Fore.CYAN
+    RE = Fore.RESET
 
 # Type effect for text in game
 

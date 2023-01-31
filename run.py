@@ -1,5 +1,6 @@
 import random
 import os
+import time
 import datetime
 import gspread
 from google.oauth2.service_account import Credentials
@@ -117,8 +118,8 @@ class Game:
 
     def __init__(self):
         """Initilize 2 Players and one Board."""
-        self.player1 = "X"
-        self.player2 = "O"
+        self.player1 = C.G + "X"
+        self.player2 = C.R + "O"
         self.board = Board()
         self.is_computer_player = False
         self.round_count = 1
@@ -136,7 +137,7 @@ class Game:
         while True:
             player = input(C.Y + "\nEnter computer or human: ")
             if player not in {"computer", "human"}:
-                print("\nOopsi! Wrong entry.")
+                print(C.M + "\nOopsi! Wrong entry.")
                 continue
             break
         if player.lower() == "computer":
@@ -151,11 +152,12 @@ class Game:
         Selecte a a random first player and call play_game.
         """
         self.is_computer_player = self.choose_player()
-        print(f"Your are Player 1 and your symbol is {self.player1}.\n")
+        print(
+            C.RE + f"\nYour are Player 1 and your symbol is {self.player1}.\n")
         print(f"Player2's symbole is {self.player2}.\n")
         player = self.random_first_player()
         print("Who goes first? Let's flip a coin.\n")
-        print(".....\n")
+        typewriter(".....\n")
         print(f"\n{player} goes first!\n")
         self.board.display_board()
         self.play_game(player)
@@ -190,10 +192,11 @@ class Game:
             self.board.display_board()
             if self.board.check_winner(player):
                 self.update_score(player)
+                time.sleep(2)
                 return self.reset_game()
             player = self.switch_player(player)
         if num == 0:
-            print("Game over! It's a tie!")
+            print(C.Y + "Game over! It's a tie!")
             return self.reset_game()
 
     def get_human_player_move(self, player):
@@ -205,15 +208,15 @@ class Game:
         print(f"\n{player}! Your turn!\n")
         while True:
             try:
-                move = int(input("Enter your move: "))
+                move = int(input(C.Y + "Enter your move: "))
                 if move > 0 and move < 10:
                     if self.board.is_field_free(move):
                         break
-                    print("Field is taken! Please choose another one.\n")
+                    print(C.M + "\nField is taken! Please choose another one.\n")
                 else:
-                    print("\nPlease enter a valid number between 1-9.\n")
+                    print(C.M + "\nPlease enter a valid number between 1-9.\n")
             except ValueError:
-                print("\nPlease enter a valid number between 1-9.\n")
+                print(C.M + "\nPlease enter a valid number between 1-9.\n")
         return move
 
     def get_computer_move(self):
@@ -223,7 +226,7 @@ class Game:
         or if the field is taken.
         """
         print(f"\n{self.player2}! Computer's turn!\n")
-        print("Computer is thinking\n")
+        typewriter("Computer is thinking\n")
         while True:
             move = random.randint(1, 9)
             if self.board.is_field_free(move):
@@ -238,7 +241,7 @@ class Game:
             self.score_player1 += 1
         else:
             self.score_player2 += 1
-        print(f"\nYeah! {player} won! Congrats!\n")
+        print(C.Y + f"\nYeah! {player} won! Congrats!\n")
 
     def switch_player(self, player):
         """
@@ -254,10 +257,10 @@ class Game:
         if self.round_count == 3:
             return self.game_over()
 
-        print(
-            f"\tPlayer 1 = {self.score_player1}\n"
-            f"\n\tPlayer 2 = {self.score_player2}"
-        )
+        print(C. Y +
+              f"\tPlayer 1 = {self.score_player1}\n"
+              f"\n\tPlayer 2 = {self.score_player2}"
+              )
         self.round_count += 1
         print(self.round_count)
         self.board.reset_board()
