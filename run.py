@@ -4,9 +4,7 @@ import datetime
 import gspread
 from google.oauth2.service_account import Credentials
 
-import colorama
-from colorama import Fore
-colorama.init(autoreset=True)
+from game_extras import GameColours as C
 
 
 # Import date from datetime
