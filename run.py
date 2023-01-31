@@ -94,7 +94,7 @@ class Board:
             == player
         ):
             return True
-        elif (
+        if (
             self.board[0][2]
             == self.board[1][1]
             == self.board[2][0]
@@ -159,8 +159,7 @@ class Game:
         """
         Get a random first player for the first move in the game
         """
-        player = random.choice([self.player1, self.player2])
-        return player
+        return random.choice([self.player1, self.player2])
 
     def play_game(self, player):
         """
@@ -170,37 +169,29 @@ class Game:
         while num > 0:
             num -= 1
             if player == self.player1:
-                print(f"\n{self.player1}! Your turn!\n")
-                position = self.get_human_player_move()
+                position = self.get_human_player_move(player)
             elif player == self.player2:
-                print(f"\n{self.player2}! Player 2's turn!\n")
                 if self.is_computer_player:
-                    print("Computer is thinking\n")
                     position = self.get_computer_move()
                 else:
-                    position = self.get_human_player_move()
+                    position = self.get_human_player_move(player)
             self.board.make_move(position, player)
             self.board.display_board()
-
             if self.board.check_winner(player):
-                if player == self.player1:
-                    self.score_player1 += 1
-                else:
-                    self.score_player2 += 1
-                print(f"\nYeah! {player} won! Congrats!\n")
+                self.update_score(player)
                 return self.reset_game()
-            else:
-                player = self.switch_player(player)
+            player = self.switch_player(player)
         if num == 0:
             print("Game over! It's a tie!")
             return self.reset_game()
 
-    def get_human_player_move(self):
+    def get_human_player_move(self, player):
         """
         Get move from human player.
         Afterwards, check if the move can be returned,
         or if the field is taken.
         """
+        print(f"\n{player}! Your turn!\n")
         while True:
             try:
                 move = int(input("Enter your move: "))
@@ -220,11 +211,23 @@ class Game:
         Afterwards, check if the move can be returned,
         or if the field is taken.
         """
+        print(f"\n{self.player2}! Computer's turn!\n")
+        print("Computer is thinking\n")
         while True:
             move = random.randint(1, 9)
             if self.board.is_field_free(move):
                 break
         return move
+
+    def update_score(self, player):
+        """
+        Update Player score once a round is won
+        """
+        if player == self.player1:
+            self.score_player1 += 1
+        else:
+            self.score_player2 += 1
+        print(f"\nYeah! {player} won! Congrats!\n")
 
     def switch_player(self, player):
         """
