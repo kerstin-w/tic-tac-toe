@@ -252,6 +252,16 @@ class Game:
         """
         return self.player1 if player == self.player2 else self.player2
 
+    def display_score(self):
+        """
+        Show the current score
+        """
+        print(game_art.SCORE)
+        print(C. Y +
+              f"\t{self.player1} = {self.score_player1}\n"
+              f"\n\t{self.player2} = {self.score_player2}"
+              )
+
     def reset_game(self):
         """
         Reset the game to play another round
@@ -259,12 +269,8 @@ class Game:
         self.clear()
         if self.round_count == 3:
             return self.game_over()
-        print(game_art.SCORE)
-        print(C. Y +
-              f"\tPlayer 1 = {self.score_player1}\n"
-              f"\n\tPlayer 2 = {self.score_player2}"
-              )
         self.round_count += 1
+        self.display_score()
         print(game_art.NEXT_ROUND)
         typewriter(f"Are you ready for round {self.round_count}?\n")
         self.board.reset_board()
@@ -283,14 +289,11 @@ class Game:
         """
         End of the game. Show final result.
         """
-        print(
-            f"{self.player1} = {self.score_player1} \
-            {self.player2} = {self.score_player2}"
-        )
+
         winner = (
             self.player1 if self.score_player1 > self.score_player2 else self.player2
         )
-
+        self.display_score()
         if self.score_player1 == self.score_player2:
             return print("It is a tie. Game Over!")
         print(f"Game Over.\n{winner} won! Congratulations")
