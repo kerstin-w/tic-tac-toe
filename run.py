@@ -246,13 +246,13 @@ class Game:
         Reset the game to play another round
         """
         self.clear()
-        self.round_count += 1
         if self.round_count == 3:
             return self.game_over()
         print(
             f"\tPlayer 1 = {self.score_player1}\n"
             f"\n\tPlayer 2 = {self.score_player2}"
         )
+        self.round_count += 1
         print(self.round_count)
 
         self.board.reset_board()
@@ -274,11 +274,10 @@ class Game:
             f"Game Over.\nPlayer 1 = {self.score_player1} - Player 2 = {self.score_player2}"
         )
         if self.is_computer_player:
-            name = input("Player please enter your name")
             score = self.score_player1
         else:
-            name = input("Player please enter your name")
             score = max(self.score_player1, self.score_player2)
+        name = input("Player please enter your name")
         self.update_worksheet(name, score)
         self.display_leaderboard()
 
@@ -302,8 +301,8 @@ class Game:
 
         update_data = sorted(
             score_sheet, key=lambda x: int(x[1]), reverse=True)
-        print("update data")
-        if (len(update_data) < 15):
+
+        if len(update_data) < 15:
             count = len(update_data)
         else:
             count = 15
