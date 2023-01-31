@@ -40,7 +40,7 @@ class Board:
         """
         Create the grid for the game
         """
-        print(C.Y + "--------+-------+--------")
+        print(C.Y + "\n--------+-------+--------")
         for row in self.board:
             print(C.Y + "|       |       |       |")
             print(C.Y + "|  ", row[0], C.Y + "  |  ",
@@ -259,13 +259,14 @@ class Game:
         self.clear()
         if self.round_count == 3:
             return self.game_over()
-
+        print(game_art.SCORE)
         print(C. Y +
               f"\tPlayer 1 = {self.score_player1}\n"
               f"\n\tPlayer 2 = {self.score_player2}"
               )
         self.round_count += 1
-        print(self.round_count)
+        print(game_art.NEXT_ROUND)
+        typewriter(f"Are you ready for round {self.round_count}?\n")
         self.board.reset_board()
         self.board.display_board()
         player = self.random_first_player()
@@ -320,6 +321,7 @@ class Game:
         sorted_data = sorted(
             score_sheet, key=lambda x: int(x[1]), reverse=True)
         count = min(len(sorted_data), 15)
+        print(game_art.LEADERBOARD)
 
         for i, col in enumerate(sorted_data[:count], start=1):
             print(
