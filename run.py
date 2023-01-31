@@ -242,17 +242,18 @@ class Game:
         self.clear()
         if self.round_count == 3:
             return self.game_over()
+
         print(
             f"\tPlayer 1 = {self.score_player1}\n"
             f"\n\tPlayer 2 = {self.score_player2}"
         )
         self.round_count += 1
         print(self.round_count)
-
         self.board.reset_board()
         self.board.display_board()
         player = self.random_first_player()
         self.play_game(player)
+        return None
 
     def clear(self):
         """
