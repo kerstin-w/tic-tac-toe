@@ -47,28 +47,20 @@ class Board:
         """
         Add current move to the grid
         """
-        row = self.get_row_index(position)
-        column = self.get_col_index(position)
+        row, column = self.get_index(position)
         self.board[row][column] = player
 
-    def get_row_index(self, position):
+    def get_index(self, position):
         """
-        Convert user input to row in the grid
+        Convert player move into row and column on the grid
         """
-        return int((position - 1) / 3)
-
-    def get_col_index(self, position):
-        """
-        Convert user input to cell in the grid
-        """
-        return int((position - 1) % 3)
+        return (int((position - 1) / 3), int((position - 1) % 3))
 
     def is_field_free(self, move):
         """
         Check if the choosen field is not occupied
         """
-        row = self.get_row_index(move)
-        column = self.get_col_index(move)
+        row, column = self.get_index(move)
         if not isinstance(self.board[row][column], int):
             return False
         return True
