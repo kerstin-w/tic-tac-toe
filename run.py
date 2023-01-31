@@ -233,8 +233,7 @@ class Game:
         """
         Switch current player to get the move from the next player
         """
-        player = self.player1 if player == self.player2 else self.player2
-        return player
+        return self.player1 if player == self.player2 else self.player2
 
     def reset_game(self):
         """
