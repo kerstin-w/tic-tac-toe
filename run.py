@@ -294,9 +294,10 @@ class Game:
             self.player1 if self.score_player1 > self.score_player2 else self.player2
         )
         self.display_score()
+        print(game_art.GAME_OVER)
         if self.score_player1 == self.score_player2:
             return print("It is a tie. Game Over!")
-        print(f"Game Over.\n{winner} won! Congratulations")
+        print(f"{winner} won! Congratulations")
         if self.is_computer_player:
             score = self.score_player1
         else:
