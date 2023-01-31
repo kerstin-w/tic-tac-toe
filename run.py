@@ -3,8 +3,8 @@ import os
 import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-
 from game_extras import GameColours as C
+from game_extras import typewriter
 
 
 # Import date from datetime
@@ -131,9 +131,10 @@ class Game:
         or against a second human player. Return True or False.
         """
         player = ""
-        print("Would you like to play against a friend or the computer?\n")
+        typewriter(
+            "Would you like to play against a friend or the computer?\n")
         while True:
-            player = input("Enter computer or human: ")
+            player = input(C.Y + "\nEnter computer or human: ")
             if player not in {"computer", "human"}:
                 print("\nOopsi! Wrong entry.")
                 continue
