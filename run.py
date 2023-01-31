@@ -291,21 +291,12 @@ class Game:
         Displays to the players the 15 best scores
         """
         score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
-        for data in score_sheet:
-            data[1] = (data[1])
-
-        update_data = sorted(
+        sorted_data = sorted(
             score_sheet, key=lambda x: int(x[1]), reverse=True)
+        count = min(len(sorted_data), 15)
 
-        if len(update_data) < 15:
-            count = len(update_data)
-        else:
-            count = 15
-
-        for i in range(0, count):
-            print(f"""
-            {i+1}\t{update_data[i][0]}\t  {update_data[i][1]}\t{
-            update_data[i][2]}""")
+        for i, col in enumerate(sorted_data[:count], start=1):
+            print(f"{i}\t{col[0]}\t{col[1]}\t{col[2]}")
 
 
 if __name__ == "__main__":
