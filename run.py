@@ -38,12 +38,13 @@ class Board:
         """
         Create the grid for the game
         """
-        print("--------+-------+--------")
+        print(C.Y + "--------+-------+--------")
         for row in self.board:
-            print("|       |       |       |")
-            print("|  ", row[0], "  |  ", row[1], "  |  ", row[2], "  | ")
-            print("|       |       |       |")
-            print("--------+-------+--------")
+            print(C.Y + "|       |       |       |")
+            print(C.Y + "|  ", row[0], C.Y + "  |  ",
+                  row[1], C.Y + "  |  ", row[2], C.Y + "  | ")
+            print(C.Y + "|       |       |       |")
+            print(C.Y + "--------+-------+--------")
 
     def make_move(self, position, player):
         """
