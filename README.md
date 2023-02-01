@@ -1,31 +1,45 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tic Tac Toe - Game
 
-Welcome Kerstin,
+# Introduction
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack development course. It utilises pure Python3 and a collection of libraries to expand on the functionality of the project. The game runs in the Code Institute mock terminal on Heroku. The main goal of the game is to place three of the marks in a horizontal, vertical or diagonal row.
 
-## Reminders
+[Live Project Here]()
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## README Table Content
 
-## Creating the Heroku app
+- [Introduction](#introduction)
+- [User Experience](#ux)
+  - [User Stories](#user-stories)
+  - [Developer Goals](#goals)
+- [Design](#design)
+  - [Colours](#colours)
+- [Logic](#Logic)
+  - [Flowchart](#flowchart)
+- [Features](#features)
+- [Storage Data](#storage)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## <a name="ux">User Experience</a>
 
-1. `heroku/python`
-2. `heroku/nodejs`
+---
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### <a name="user-stories">User Stories</a>
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- As a user, I want to understand the purpose of the game.
+- As a user, I want to be able to play the game either against a friend or the computer.
+- As a user, I want to be able follow the score after each round.
+- As a user, I want to be able to store my result and see other players' results on the Leaderboard.
 
-Connect your GitHub repository and deploy as normal.
+### <a name="goals">Developer Goals</a>
 
-## Constraints
+- As a developer, I want to build an easy game for the user to play.
+- As a developer, I want usernames, final scores and final score percentages to be uploaded to Google Spreadsheets.
+- As a developer, I want the user to be warned if they input invalid data or provide an incorrect answer.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## <a name="design">Design</a>
 
------
-Happy coding!
+---
+
+### <a name="colours">Colours</a>
+
+- The colours in the game are supplied by the Python Colorama Model
