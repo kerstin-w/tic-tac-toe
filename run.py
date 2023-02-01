@@ -125,6 +125,8 @@ class Board:
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
+    MAX_GRID_CELLS = 9
+    NO_OF_ROUNDS = 3
 
     def __init__(self):
         """Initilize 2 Players and one Board."""
@@ -193,9 +195,9 @@ class Game:
         If not, change the player for the following move.
         Start a new round once there are no more moves left.
         """
-        num = 9
-        while num > 0:
-            num -= 1
+        max_grid_cells = self.MAX_GRID_CELLS
+        while max_grid_cells > 0:
+            max_grid_cells -= 1
             if player == self.player1:
                 position = self.get_human_player_move(player)
             elif player == self.player2:
@@ -210,7 +212,7 @@ class Game:
                 time.sleep(2)
                 return self.reset_game()
             player = self.switch_player(player)
-        if num == 0:
+        if max_grid_cells == 0:
             print(Colors.Y + "\nROUND OVER! IT'S A TIE!")
             time.sleep(2)
             return self.reset_game()
@@ -288,8 +290,9 @@ class Game:
         """
         Reset the game to play another round
         """
+        no_of_rounds = self.NO_OF_ROUNDS
         self.clear()
-        if self.round_count == 3:
+        if self.round_count == no_of_rounds:
             return self.game_over()
         self.round_count += 1
         self.display_score()
