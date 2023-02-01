@@ -40,6 +40,7 @@ class Board:
         """
         Create the grid for the game
         """
+        time.sleep(1)
         print(C.Y + "\n--------+-------+--------")
         for row in self.board:
             print(C.Y + "|       |       |       |")
@@ -159,8 +160,9 @@ class Game:
             C.RE + f"\nYour are Player 1 and your symbol is {self.player1}.\n")
         print(f"Player2's symbole is {self.player2}.\n")
         player = self.random_first_player()
-        print("Who goes first? Let's flip a coin.\n")
+        typewriter("Who goes first? Let's flip a coin.\n")
         typewriter(".....\n")
+        time.sleep(2)
         print(f"\n{player} goes first!\n")
         self.board.display_board()
         self.play_game(player)
@@ -199,8 +201,8 @@ class Game:
                 return self.reset_game()
             player = self.switch_player(player)
         if num == 0:
+            print(C.Y + "\nROUND OVER! IT'S A TIE!")
             time.sleep(2)
-            print(C.Y + "Game over! It's a tie!")
             return self.reset_game()
 
     def get_human_player_move(self, player):
@@ -231,6 +233,7 @@ class Game:
         """
         print(f"\n{self.player2}! Computer's turn!\n")
         typewriter("Computer is thinking\n")
+        time.sleep(2)
         while True:
             move = random.randint(1, 9)
             if self.board.is_field_free(move):
@@ -245,7 +248,7 @@ class Game:
             self.score_player1 += 1
         else:
             self.score_player2 += 1
-        print(C.Y + f"\nYeah! {player} won! Congrats!\n")
+        print(C.Y + f"\nYEAH! {player} WON! CONGRATS!\n")
 
     def switch_player(self, player):
         """
@@ -332,7 +335,7 @@ class Game:
 
         for i, col in enumerate(sorted_data[:count], start=1):
             print(
-                f"{i}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(*col))
+                f"{i: >2}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(*col))
 
 
 if __name__ == "__main__":
