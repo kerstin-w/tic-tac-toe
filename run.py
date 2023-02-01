@@ -60,10 +60,10 @@ class Board:
         """
         Add current move to the grid
         """
-        row, column = self.get_index(position)
+        row, column = self.get_row_column_index(position)
         self.board[row][column] = player_symbol
 
-    def get_index(self, position):
+    def get_row_column_index(self, position):
         """
         Convert player move into row and column on the grid
         """
@@ -73,7 +73,7 @@ class Board:
         """
         Check if the choosen field is not occupied
         """
-        row, column = self.get_index(move)
+        row, column = self.get_row_column_index(move)
         if not isinstance(self.board[row][column], int):
             return False
         return True
@@ -86,6 +86,7 @@ class Board:
         # check in rows
         for row in self.board:
             board_items = set(row)
+            # Length 1 means all the elements in the row are same
             if len(board_items) == 1 and (not isinstance(board_items, int)):
                 return True
 
@@ -145,15 +146,14 @@ class Game:
             "Would you like to play against a friend or the computer?\n"
         )
         while True:
-            player = input(Colors.Y + "\nEnter computer or human: ")
+            player = input(Colors.Y + "\nEnter computer or human: ").lower()
             if player not in {"computer", "human"}:
                 print(Colors.M + "\nOopsi! Wrong entry.")
                 continue
             break
-        if player.lower() == "computer":
+        if player == "computer":
             return True
-        else:
-            return False
+        return False
 
     def start_game(self):
         """
