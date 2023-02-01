@@ -128,7 +128,7 @@ class Game:
     """Represents a Tic-Tac-Toe game."""
 
     MAX_GRID_CELLS = 9
-    NO_OF_ROUNDS = 3
+    NO_OF_ROUNDS = 1
 
     def __init__(self):
         """Initilize 2 Players and one Board."""
@@ -151,7 +151,7 @@ class Game:
         )
 
         player = input_with_validation(
-            prompt="\nEnter (computer/human): \n",
+            prompt="\nEnter (computer/human):\n>>> ",
             valid_options={"computer", "human"},
         )
 
@@ -253,7 +253,7 @@ class Game:
         or if the field is taken.
         """
         print(f"\n{self.player2}! Computer's turn!\n")
-        typewriter("Computer is thinking\n")
+        typewriter("Computer is thinking....\n")
         time.sleep(2)
         while True:
             selected_position = random.randint(1, 9)
@@ -289,7 +289,9 @@ class Game:
 
     def reset_game(self):
         """
-        Reset the game to play another round
+        Reset the game to play another round.
+        Get a new random player and start play_game.
+        Once all 5 rounds are played return game_over.
         """
         no_of_rounds = self.NO_OF_ROUNDS
         self.clear()
@@ -315,7 +317,6 @@ class Game:
         """
         End of the game. Show final result.
         """
-
         winner = (
             self.player1
             if self.score_player1 > self.score_player2
@@ -325,14 +326,15 @@ class Game:
         print(game_art.GAME_OVER)
         if self.score_player1 == self.score_player2:
             return print(Colors.Y + "It is a tie. Thank you for playing!")
-        print(f"{winner} won! Congratulations!\n")
+        print(f"{winner}  W O N! C O N G R A TU L A T I O N S!\n")
         if self.is_computer_player:
             score = self.score_player1
         else:
             score = max(self.score_player1, self.score_player2)
         name = input(
             Colors.Y
-            + f"Make your mark on our leaderboard. {winner} enter your name: "
+            + f"Make your mark on our leaderboard. \
+            \n{winner} enter your name:\n>>> "
         )
         self.update_score_worksheet(name, score)
         self.display_leaderboard()
@@ -350,7 +352,7 @@ class Game:
         """
         Displays to the players the 15 best scores
         """
-        score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
+        score_sheet = data[1:]
 
         sorted_data = sorted(
             score_sheet, key=lambda x: int(x[1]), reverse=True
@@ -376,14 +378,14 @@ def running_game():
         "Would you like to start the game (g), or see the leaderboard (l)?\n"
     )
     display_leaderboard_or_game = input_with_validation(
-        prompt="\nEnter (g/l): \n", valid_options={"g", "l"}
+        prompt="\nEnter (g/l):\n>>> ", valid_options={"g", "l"}
     )
     if display_leaderboard_or_game == "g":
         return Game().start_game()
     Game().display_leaderboard()
     typewriter("\nWould you like to start the game now?\n")
     start_game = input_with_validation(
-        prompt="\nEnter (y/n)\n", valid_options={"y", "n"}
+        prompt="\nEnter (y/n):\n>>> ", valid_options={"y", "n"}
     )
     if start_game == "y":
         return Game().start_game()
