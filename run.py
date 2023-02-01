@@ -56,12 +56,12 @@ class Board:
             print(Colors.Y + "|       |       |       |")
             print(Colors.Y + "--------+-------+--------")
 
-    def make_move(self, position, player):
+    def make_move(self, position, player_symbol):
         """
         Add current move to the grid
         """
         row, column = self.get_index(position)
-        self.board[row][column] = player
+        self.board[row][column] = player_symbol
 
     def get_index(self, position):
         """
@@ -78,7 +78,7 @@ class Board:
             return False
         return True
 
-    def check_winner(self, player):
+    def check_winner(self, player_symbol):
         """
         Check for a winner in rows, columns and diagonals.
         Also check if the grid is full and there is a tie.
@@ -95,14 +95,24 @@ class Board:
                 self.board[0][i]
                 == self.board[1][i]
                 == self.board[2][i]
-                == player
+                == player_symbol
             ):
                 return True
 
         # check in diagonals
-        if self.board[0][0] == self.board[1][1] == self.board[2][2] == player:
+        if (
+            self.board[0][0]
+            == self.board[1][1]
+            == self.board[2][2]
+            == player_symbol
+        ):
             return True
-        if self.board[0][2] == self.board[1][1] == self.board[2][0] == player:
+        if (
+            self.board[0][2]
+            == self.board[1][1]
+            == self.board[2][0]
+            == player_symbol
+        ):
             return True
 
     def reset_board(self):
