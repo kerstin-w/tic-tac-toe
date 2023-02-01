@@ -6,6 +6,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from game_extras import GameColours as Colors
 from game_extras import typewriter
+from game_extras import input_with_validation
 import game_art
 
 
@@ -125,6 +126,7 @@ class Board:
 
 class Game:
     """Represents a Tic-Tac-Toe game."""
+
     MAX_GRID_CELLS = 9
     NO_OF_ROUNDS = 3
 
@@ -147,12 +149,12 @@ class Game:
         typewriter(
             "Would you like to play against a friend or the computer?\n"
         )
-        while True:
-            player = input(Colors.Y + "\nEnter computer or human: ").lower()
-            if player not in {"computer", "human"}:
-                print(Colors.M + "\nOopsi! Wrong entry.")
-                continue
-            break
+
+        player = input_with_validation(
+            prompt="\nEnter (computer/human): \n",
+            valid_options={"computer", "human"},
+        )
+
         if player == "computer":
             self.is_computer_player = True
         return self.is_computer_player
@@ -163,7 +165,6 @@ class Game:
         a human player.
         Selecte a a random first player and call play_game.
         """
-        print(game_art.LOGO)
         print(game_art.GAME_RULES)
         self.choose_player()
         print(
@@ -363,5 +364,31 @@ class Game:
             )
 
 
+def running_game():
+    """
+    User is asked wether to play the game, or see the leaderboard.
+    If the user choses to play the game, the game will start.
+    Otherwise the leaderoard will be displayed with the option
+    to start the game or not.
+    """
+    print(game_art.LOGO)
+    typewriter(
+        "Would you like to start the game (g), or see the leaderboard (l)?\n"
+    )
+    display_leaderboard_or_game = input_with_validation(
+        prompt="\nEnter (g/l): \n", valid_options={"g", "l"}
+    )
+    if display_leaderboard_or_game == "g":
+        return Game().start_game()
+    Game().display_leaderboard()
+    typewriter("\nWould you like to start the game now?\n")
+    start_game = input_with_validation(
+        prompt="\nEnter (y/n)\n", valid_options={"y", "n"}
+    )
+    if start_game == "y":
+        return Game().start_game()
+    print("Thank You. Maybe next time!")
+
+
 if __name__ == "__main__":
-    Game().start_game()
+    running_game()

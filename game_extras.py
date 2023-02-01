@@ -21,11 +21,28 @@ class GameColours():
 
 def typewriter(string):
     """
-   Typewriter for beginning of the game
-   The Python code for the typewriter was found here:
-   https://replit.com/talk/learn/Typewriter-effect-Python/139897
-   """
+    Typewriter for beginning of the game
+    The Python code for the typewriter was found here:
+    https://replit.com/talk/learn/Typewriter-effect-Python/139897
+    """
     for i in string:
         sys.stdout.write(i)
         sys.stdout.flush()
         time.sleep(0.05)
+
+# Validation for user input
+
+
+def input_with_validation(prompt, valid_options):
+    """
+    Askes the user to enter en input and checks afterwards,
+    if it matches with the valid options.
+    If not the user can enter input again.
+    """
+    while True:
+        user_input = input(Fore.CYAN + prompt).lower()
+        if user_input not in valid_options:
+            print(Fore.MAGENTA + "\nOopsi! Wrong entry.")
+            continue
+        break
+    return user_input
