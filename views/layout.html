@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
-    <title>Python Terminal by Code Institute</title>
+    <title>Tic Tac Toe</title>
     <style>
         html {
             height: 100%;
@@ -19,7 +19,7 @@
             background-image: linear-gradient(to right top, #75507b, #665f91, #4e6ea0, #2e7ca7, #0089a6, #3496af, #50a3b8, #67b0c2, #97c1d8, #c1d4e7, #e4e8f3, #ffffff);
         }
 
-        #terminal {
+        #container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -180,7 +180,8 @@
         }
     </style>
 </head>
-
-@{body}
+<div id="container">
+    @{body}
+</div>
 
 </html>
