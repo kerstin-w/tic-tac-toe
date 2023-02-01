@@ -4,7 +4,7 @@ import time
 import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-from game_extras import GameColours as C
+from game_extras import GameColours as Colors
 from game_extras import typewriter
 import game_art
 
@@ -16,7 +16,7 @@ today_date = date.strftime("%d/%m/%Y")
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
+    "https://www.googleapis.com/auth/drive",
 ]
 
 CREDS = Credentials.from_service_account_file("creds.json")
@@ -41,13 +41,20 @@ class Board:
         Create the grid for the game
         """
         time.sleep(1)
-        print(C.Y + "\n--------+-------+--------")
+        print(Colors.Y + "\n--------+-------+--------")
         for row in self.board:
-            print(C.Y + "|       |       |       |")
-            print(C.Y + "|  ", row[0], C.Y + "  |  ",
-                  row[1], C.Y + "  |  ", row[2], C.Y + "  | ")
-            print(C.Y + "|       |       |       |")
-            print(C.Y + "--------+-------+--------")
+            print(Colors.Y + "|       |       |       |")
+            print(
+                Colors.Y + "|  ",
+                row[0],
+                Colors.Y + "  |  ",
+                row[1],
+                Colors.Y + "  |  ",
+                row[2],
+                Colors.Y + "  | ",
+            )
+            print(Colors.Y + "|       |       |       |")
+            print(Colors.Y + "--------+-------+--------")
 
     def make_move(self, position, player):
         """
@@ -93,19 +100,9 @@ class Board:
                 return True
 
         # check in diagonals
-        if (
-            self.board[0][0]
-            == self.board[1][1]
-            == self.board[2][2]
-            == player
-        ):
+        if self.board[0][0] == self.board[1][1] == self.board[2][2] == player:
             return True
-        if (
-            self.board[0][2]
-            == self.board[1][1]
-            == self.board[2][0]
-            == player
-        ):
+        if self.board[0][2] == self.board[1][1] == self.board[2][0] == player:
             return True
 
     def reset_board(self):
@@ -120,8 +117,8 @@ class Game:
 
     def __init__(self):
         """Initilize 2 Players and one Board."""
-        self.player1 = C.G + "X"
-        self.player2 = C.R + "O"
+        self.player1 = Colors.G + "X"
+        self.player2 = Colors.R + "O"
         self.board = Board()
         self.is_computer_player = False
         self.round_count = 1
@@ -135,11 +132,12 @@ class Game:
         """
         player = ""
         typewriter(
-            "Would you like to play against a friend or the computer?\n")
+            "Would you like to play against a friend or the computer?\n"
+        )
         while True:
-            player = input(C.Y + "\nEnter computer or human: ")
+            player = input(Colors.Y + "\nEnter computer or human: ")
             if player not in {"computer", "human"}:
-                print(C.M + "\nOopsi! Wrong entry.")
+                print(Colors.M + "\nOopsi! Wrong entry.")
                 continue
             break
         if player.lower() == "computer":
@@ -157,7 +155,9 @@ class Game:
         print(game_art.GAME_RULES)
         self.is_computer_player = self.choose_player()
         print(
-            C.RE + f"\nYour are Player 1 and your symbol is {self.player1}.\n")
+            Colors.RE
+            + f"\nYour are Player 1 and your symbol is {self.player1}.\n"
+        )
         print(f"Player2's symbole is {self.player2}.\n")
         player = self.random_first_player()
         typewriter("Who goes first? Let's flip a coin.\n")
@@ -201,7 +201,7 @@ class Game:
                 return self.reset_game()
             player = self.switch_player(player)
         if num == 0:
-            print(C.Y + "\nROUND OVER! IT'S A TIE!")
+            print(Colors.Y + "\nROUND OVER! IT'S A TIE!")
             time.sleep(2)
             return self.reset_game()
 
@@ -214,15 +214,23 @@ class Game:
         print(f"\n{player}! Your turn!\n")
         while True:
             try:
-                move = int(input(C.Y + "Enter your move: "))
+                move = int(input(Colors.Y + "Enter your move: "))
                 if move > 0 and move < 10:
                     if self.board.is_field_free(move):
                         break
-                    print(C.M + "\nField is taken! Please choose another one.\n")
+                    print(
+                        Colors.M
+                        + "\nField is taken! Please choose another one.\n"
+                    )
                 else:
-                    print(C.M + "\nPlease enter a valid number between 1-9.\n")
+                    print(
+                        Colors.M
+                        + "\nPlease enter a valid number between 1-9.\n"
+                    )
             except ValueError:
-                print(C.M + "\nPlease enter a valid number between 1-9.\n")
+                print(
+                    Colors.M + "\nPlease enter a valid number between 1-9.\n"
+                )
         return move
 
     def get_computer_move(self):
@@ -248,7 +256,7 @@ class Game:
             self.score_player1 += 1
         else:
             self.score_player2 += 1
-        print(C.Y + f"\nYEAH! {player} WON! CONGRATS!\n")
+        print(Colors.Y + f"\nYEAH! {player} WON! CONGRATS!\n")
 
     def switch_player(self, player):
         """
@@ -261,10 +269,10 @@ class Game:
         Show the current score
         """
         print(game_art.SCORE)
-        print(C. Y +
-              f"\t{self.player1} = {self.score_player1}\n"
-              f"\n\t{self.player2} = {self.score_player2}"
-              )
+        print(
+            Colors.Y + f"\t{self.player1} = {self.score_player1}\n"
+            f"\n\t{self.player2} = {self.score_player2}"
+        )
 
     def reset_game(self):
         """
@@ -295,20 +303,23 @@ class Game:
         """
 
         winner = (
-            self.player1 if self.score_player1 > self.score_player2 else self.player2
+            self.player1
+            if self.score_player1 > self.score_player2
+            else self.player2
         )
         self.display_score()
         print(game_art.GAME_OVER)
         if self.score_player1 == self.score_player2:
-            return print(C.Y + "It is a tie. Thank you for playing!")
+            return print(Colors.Y + "It is a tie. Thank you for playing!")
         print(f"{winner} won! Congratulations!\n")
         if self.is_computer_player:
             score = self.score_player1
         else:
             score = max(self.score_player1, self.score_player2)
         name = input(
-            C.Y +
-            f"Make your mark on our leaderboard. {winner} enter your name: ")
+            Colors.Y
+            + f"Make your mark on our leaderboard. {winner} enter your name: "
+        )
         self.update_worksheet(name, score)
         self.display_leaderboard()
 
@@ -318,8 +329,7 @@ class Game:
         This updates a new row with the name, score and date.
         """
         typewriter("\nUpdating Leaderboard...")
-        leaderboard.append_row(
-            [name, score, today_date])
+        leaderboard.append_row([name, score, today_date])
         typewriter("\nLeaderboard Update successful.\n")
 
     def display_leaderboard(self):
@@ -329,13 +339,15 @@ class Game:
         score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
 
         sorted_data = sorted(
-            score_sheet, key=lambda x: int(x[1]), reverse=True)
+            score_sheet, key=lambda x: int(x[1]), reverse=True
+        )
         count = min(len(sorted_data), 15)
         print(game_art.LEADERBOARD)
 
         for i, col in enumerate(sorted_data[:count], start=1):
             print(
-                f"{i: >2}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(*col))
+                f"{i: >2}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(*col)
+            )
 
 
 if __name__ == "__main__":
