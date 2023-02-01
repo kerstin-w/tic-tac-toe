@@ -69,11 +69,11 @@ class Board:
         """
         return (int((position - 1) / 3), int((position - 1) % 3))
 
-    def is_field_free(self, move):
+    def is_field_free(self, selected_position):
         """
         Check if the choosen field is not occupied
         """
-        row, column = self.get_row_column_index(move)
+        row, column = self.get_row_column_index(selected_position)
         if not isinstance(self.board[row][column], int):
             return False
         return True
@@ -224,9 +224,9 @@ class Game:
         print(f"\n{player}! Your turn!\n")
         while True:
             try:
-                move = int(input(Colors.Y + "Enter your move: "))
-                if move > 0 and move < 10:
-                    if self.board.is_field_free(move):
+                selected_position = int(input(Colors.Y + "Enter your move: "))
+                if selected_position > 0 and selected_position < 10:
+                    if self.board.is_field_free(selected_position):
                         break
                     print(
                         Colors.M
@@ -241,7 +241,7 @@ class Game:
                 print(
                     Colors.M + "\nPlease enter a valid number between 1-9.\n"
                 )
-        return move
+        return selected_position
 
     def get_computer_move(self):
         """
@@ -253,10 +253,10 @@ class Game:
         typewriter("Computer is thinking\n")
         time.sleep(2)
         while True:
-            move = random.randint(1, 9)
-            if self.board.is_field_free(move):
+            selected_position = random.randint(1, 9)
+            if self.board.is_field_free(selected_position):
                 break
-        return move
+        return selected_position
 
     def update_score(self, player):
         """
