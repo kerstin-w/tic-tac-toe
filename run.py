@@ -154,8 +154,8 @@ class Game:
                 continue
             break
         if player == "computer":
-            return True
-        return False
+            self.is_computer_player = True
+        return self.is_computer_player
 
     def start_game(self):
         """
@@ -165,7 +165,7 @@ class Game:
         """
         print(game_art.LOGO)
         print(game_art.GAME_RULES)
-        self.is_computer_player = self.choose_player()
+        self.choose_player()
         print(
             Colors.RE
             + f"\nYour are Player 1 and your symbol is {self.player1}.\n"
@@ -333,10 +333,10 @@ class Game:
             Colors.Y
             + f"Make your mark on our leaderboard. {winner} enter your name: "
         )
-        self.update_worksheet(name, score)
+        self.update_score_worksheet(name, score)
         self.display_leaderboard()
 
-    def update_worksheet(self, name, score):
+    def update_score_worksheet(self, name, score):
         """
         Update a new row in the Tic Tact Toe worksheet
         This updates a new row with the name, score and date.
