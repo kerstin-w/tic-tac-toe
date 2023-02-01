@@ -151,7 +151,7 @@ class Game:
         )
 
         player = input_with_validation(
-            prompt="\nEnter (computer/human):\n>>> ",
+            prompt="\nEnter (computer/human):\n ",
             valid_options={"computer", "human"},
         )
 
@@ -227,7 +227,7 @@ class Game:
         print(f"\n{player}! Your turn!\n")
         while True:
             try:
-                selected_position = int(input(Colors.Y + "Enter your move: "))
+                selected_position = int(input(Colors.Y + "Enter your move:\n"))
                 if selected_position > 0 and selected_position < 10:
                     if self.board.is_field_free(selected_position):
                         break
@@ -334,7 +334,7 @@ class Game:
         name = input(
             Colors.Y
             + f"Make your mark on our leaderboard. \
-            \n{winner} enter your name:\n>>> "
+            \n{winner} enter your name:\n"
         )
         self.update_score_worksheet(name, score)
         self.display_leaderboard()
@@ -378,14 +378,14 @@ def running_game():
         "Would you like to start the game (g), or see the leaderboard (l)?\n"
     )
     display_leaderboard_or_game = input_with_validation(
-        prompt="\nEnter (g/l):\n>>> ", valid_options={"g", "l"}
+        prompt="\nEnter (g/l):\n", valid_options={"g", "l"}
     )
     if display_leaderboard_or_game == "g":
         return Game().start_game()
     Game().display_leaderboard()
     typewriter("\nWould you like to start the game now?\n")
     start_game = input_with_validation(
-        prompt="\nEnter (y/n):\n>>> ", valid_options={"y", "n"}
+        prompt="\nEnter (y/n):\n", valid_options={"y", "n"}
     )
     if start_game == "y":
         return Game().start_game()
