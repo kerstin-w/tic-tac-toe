@@ -16,15 +16,7 @@
 
         body {
             font-family: Arial;
-            background-image: linear-gradient(to right top, #75507b, #665f91, #4e6ea0, #2e7ca7, #0089a6, #3496af, #50a3b8, #67b0c2, #97c1d8, #c1d4e7, #e4e8f3, #ffffff);
-        }
-
-        #container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-left: 120px;
+            background-image: linear-gradient(to right top, #75507b, #5f6497, #3978a6, #0089a6, #19989a);
         }
 
         /**
@@ -37,6 +29,10 @@
             user-select: none;
             -ms-user-select: none;
             -webkit-user-select: none;
+        }
+
+        .xterm-screen {
+            margin: 0 auto;
         }
 
         .xterm.focus,
@@ -180,8 +176,7 @@
         }
     </style>
 </head>
-<div id="container">
-    @{body}
-</div>
+
+@{body}
 
 </html>
