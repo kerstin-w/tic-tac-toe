@@ -259,7 +259,85 @@ The [PEP8](https://pep8ci.herokuapp.com/) Validator Service was used to validate
 
 - No errors or warnings were found during the testing of the code in PEP8
 
+<details>
+<summary>run.py</summary>
+
 ![PEP 8](assets/readme/pep8.png "PEP8")
+
+</details>
+
+<details>
+<summary>game_art.py</summary>
+
+![PEP 8](assets/readme/game-art.png "PEP8")
+
+</details>
+
+<details>
+<summary>game_extras.py</summary>
+
+![PEP 8](assets/readme/game-extras.png "PEP8")
+
+</details>
+
+---
+
+### W3C Markup Validator
+
+No errors or warnings were found during testing of the code in [W3C Markup Validator](https://validator.w3.org/).
+
+<details>
+<summary>HTML Validator Result</summary>
+
+![HTML Validator Result](assets/readme/w3c.png)
+
+</details>
+
+---
+
+### W3C CSS Validator
+
+No errors or warnings were found during testing of the code in [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+<details>
+<summary>CSS Validator Result</summary>
+
+![CSS Validator Result](assets/readme/w3c-css.png)
+
+</details>
+
+---
+
+### JSHint JS Validator
+
+The [JSHint JS Validator](https://jshint.com/) return three warnings. Since JS was not part of this project and the code was from the utilized template, the warnings remained unedited.
+
+<details>
+<summary>JSHint JS Validator Result]</summary>
+
+![JSHint JS Validator Result](assets/readme/js.png)
+
+</details>
+
+---
+
+### Lighthouse
+
+<details>
+<summary>Lighthouse Desktop Validator Results - Desktop</summary>
+
+![Screenshot of Lighthouse Desktop Validator Results](assets/readme/lighthouse-desktop.png)
+
+</details>
+
+<details>
+<summary>Lighthouse Desktop Validator Results - Mobile</summary>
+
+![Screenshot of Lighthouse Desktop Validator Results](assets/readme/lighthouse-mobile.png)
+
+</details>
+
+---
 
 ### <a name="ux-testing">User Experience Testing</a>
 
