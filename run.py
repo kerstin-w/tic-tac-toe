@@ -1,4 +1,5 @@
 import random
+import os
 import time
 import datetime
 import gspread
@@ -6,7 +7,6 @@ from google.oauth2.service_account import Credentials
 from game_extras import GameColours as Colors
 from game_extras import typewriter
 from game_extras import input_with_validation
-from game_extras import clear
 import game_art
 
 
@@ -294,7 +294,7 @@ class Game:
         Once all 5 rounds are played return game_over.
         """
         no_of_rounds = self.NO_OF_ROUNDS
-        clear()
+        os.system("clear")
         if self.round_count == no_of_rounds:
             return self.game_over()
         self.round_count += 1
