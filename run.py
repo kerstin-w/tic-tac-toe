@@ -390,7 +390,7 @@ def running_game():
     if start_game == "y":
         Game().start_game()
         return
-    print("Thank You. Maybe next time!")
+    print("\nTHANK YOU! MAYBE NEXT TIME!")
 
 
 if __name__ == "__main__":

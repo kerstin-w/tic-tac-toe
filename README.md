@@ -75,7 +75,7 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 
 ### <a name="colours">Colours</a>
 
-- The colours in the game are supplied by the Python Colorama package. The package has allowed a few colours to be applied to the text within the terminal environment.
+The colours in the game are supplied by the Python [Colorama](https://pypi.org/project/colorama/) package. The package has allowed a few colours to be applied to the text within the terminal environment.
 
 ## <a name="logic">Logic</a>
 
@@ -93,61 +93,61 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 
 ![Logo](assets/readme/welcome.png "Logo")
 
-When the user enters the website, they see the logo of the game. The user is asked if they want to see the leaderboard or start the game. 
+- When the user enters the website, they see the logo of the game. The user is asked if they want to see the leaderboard or start the game. 
 
 ### <a name="leaderboard">Leaderboard</a>
 
 ![Leaderboard](assets/readme/leaderboard1.png "Leaderboard")
 
-When the user decides to see the leaderboard, the top 15 scores are displayed. After that the user will be asked again if they want to play the game or end it. 
+- When the user decides to see the leaderboard, the top 15 scores are displayed. After that the user will be asked again if they want to play the game or end it. 
 
 ### <a name="rules">Game Rules</a>
 
 ![Game Rules](assets/readme/welcome.png "Game Rules")
 
-When the user decides to play the game, the first thing they see is the rules for playing the game.
+- When the user decides to play the game, the first thing they see is the rules for playing the game.
 
 ### <a name="computer-friend">Choose to play against computer/friend</a>
 
 ![Choose Player](assets/readme/player.png "Choose Player")
 
-The user has the option to play the game against the computer. The computer will then make random moves. Alternatively, the user can play against a friend.
+- The user has the option to play the game against the computer. The computer will then make random moves. Alternatively, the user can play against a friend.
 
 ### <a name="first-player">First Player</a>
 
 ![First Player](assets/readme/first-player.png "First Player")
 
-The user is shown who is playing which symbol and a random first player for the first move is generated. 
+- The user is shown who is playing which symbol and a random first player for the first move is generated. 
 
 ### <a name="game-move">Game Move</a>
 
 ![Game Move](assets/readme/move.png "Game Move")
 
-The players are asked in turn to enter their move and it is placed on the field. 
+- The players are asked in turn to enter their move and it is placed on the field. 
 
 ### <a name="round-win">Round Win</a>
 
 ![Round Win/Tie](assets/readme/round-win.png "Round Win/Tie")
 
-When a player has won the round, this is displayed. Also a draw will be shown after there is no move left.
+- When a player has won the round, this is displayed. Also a draw will be shown after there is no move left.
 
 ### <a name="round-win">Round Win</a>
 
 ![Score](assets/readme/score.png "Score")
 
-After a round is finished, the score is updated and displayed. After that a new round starts.
+- After a round is finished, the score is updated and displayed. After that a new round starts.
 
 ### <a name="game-over">Game Over</a>
 
 ![Game Over](assets/readme/game-over.png "Game Over")
 
-After 5 rounds are played, the game ends, displays the score and the winner. The winner can then save his score in the leaderboard.
+- After 5 rounds are played, the game ends, displays the score and the winner. The winner can then save his score in the leaderboard.
 
 ### <a name="updated-leaderboard">Updated Leaderboard</a>
 
 ![Leaderboard](assets/readme/leaderboard2.png "Leaderboard")
 
-After the winner has entered his name the leaderboard will be updated and the best 15 players will be listed.
+- After the winner has entered his name the leaderboard will be updated and the best 15 players will be listed.
 
 ### <a name="future-features">Future Features</a>
 
@@ -198,7 +198,7 @@ To enable access from the project to Google Sheets, credentials must be created 
 - Select "Keys" from the top menu bar.
 - Select "Create new key" from the "Add Key" menu.
 - Select "JSON" and click "Create"
-- The JSON file will be downloaded to your computer. Copy the contents into a creds.json file within the repository. Make sure to add this file to the .gitignore file as this is sensitive data. 
+- The JSON file will be downloaded to your computer. Copy the contents into a creds.json file within the repository. Make sure to add this file to the `.gitignore` file as this is sensitive data. 
 
 ## <a name="technologies">Technologies Used</a>
 
