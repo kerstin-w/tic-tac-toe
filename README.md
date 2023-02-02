@@ -19,6 +19,12 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 - [Logic](#Logic)
   - [Flowchart](#flowchart)
 - [Features](#features)
+  - [Logo and Menu](#logo-menu)
+  - [Leaderboard](#leaderboard)
+  - [Game Rules](#rules)
+  - [Choose to play against computer/friend](#computer-friend)
+  - [First Player](#first-player)
+  - [Game Move](#game-move)
 - [Storage Data](#storage)
 
 ## <a name="ux">User Experience</a>
@@ -35,7 +41,7 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 ### <a name="goals">Developer Goals</a>
 
 - As a developer, I want to build an easy game for the user to play.
-- As a developer, I want usernames, final scores and final score percentages to be uploaded to Google Spreadsheets.
+- As a developer, I want usernames, final scores and date to be uploaded to Google Spreadsheets.
 - As a developer, I want the user to be warned if they input invalid data or provide an incorrect answer.
 
 ## <a name="design">Design</a>
@@ -53,3 +59,44 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 ### <a name="flowchart">Flowchart</a>
 
 ![Flowchart](assets/readme/flowchart.png "Flowchart")
+
+## <a name="features">Features</a>
+
+---
+
+### <a name="logo-menu">Logo and Menu</a>
+
+![Logo](assets/readme/welcome.png "Logo")
+
+When the user enters the website, they see the logo of the game. The user is asked if they want to see the leaderboard or start the game. 
+
+### <a name="leaderboard">Leaderboard</a>
+
+![Leaderboard](assets/readme/leaderboard1.png "Leaderboard")
+
+When the user decides to see the leaderboard, the top 15 scores are displayed. After that the user will be asked again if they want to play the game or end it. 
+
+### <a name="rules">Game Rules</a>
+
+![Game Rules](assets/readme/welcome.png "Game Rules")
+
+When the user decides to play the game, the first thing they see is the rules for playing the game.
+
+### <a name="computer-friend">Choose to play against computer/friend</a>
+
+![Choose Player](assets/readme/player.png "Choose Player")
+
+The user has the option to play the game against the computer. The computer will then make random moves. Alternatively, the user can play against a friend.
+
+### <a name="first-player">First Player</a>
+
+![First Player](assets/readme/first-player.png "First Player")
+
+The user is shown who is playing which symbol and a random first player for the first move is generated. 
+
+### <a name="game-move">Game Move</a>
+
+![Game Move](assets/readme/move.png "Game Move")
+
+The players are asked in turn to enter their move and it is placed on the field. 
+
