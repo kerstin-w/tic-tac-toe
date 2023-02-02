@@ -115,6 +115,7 @@ class Board:
             == player_symbol
         ):
             return True
+        return None
 
     def reset_board(self):
         """
