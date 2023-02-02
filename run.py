@@ -311,7 +311,7 @@ class Game:
         """
         Clear terminal
         """
-        os.system("cls" if os.name == "nt" else "clear")
+        os.system("clear")
 
     def game_over(self):
         """
