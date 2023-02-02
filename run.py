@@ -135,7 +135,7 @@ class Game:
         self.player2 = Colors.R + "O"
         self.board = Board()
         self.is_computer_player = False
-        self.round_count = 1
+        self.round_count = 5
         self.score_player1 = 0
         self.score_player2 = 0
 
