@@ -25,6 +25,10 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
   - [Choose to play against computer/friend](#computer-friend)
   - [First Player](#first-player)
   - [Game Move](#game-move)
+  - [Round Win/Tie](#round-win)
+  - [Score](#score)
+  - [Game Over](#game-over)
+  - [Updated Leaderboard](#updated-leaderboard)
 - [Storage Data](#storage)
 
 ## <a name="ux">User Experience</a>
@@ -100,3 +104,26 @@ The user is shown who is playing which symbol and a random first player for the 
 
 The players are asked in turn to enter their move and it is placed on the field. 
 
+### <a name="round-win">Round Win</a>
+
+![Round Win/Tie](assets/readme/round-win.png "Round Win/Tie")
+
+When a player has won the round, this is displayed. Also a draw will be shown after there is no move left.
+
+### <a name="round-win">Round Win</a>
+
+![Score](assets/readme/score.png "Score")
+
+After a round is finished, the score is updated and displayed. After that a new round starts.
+
+### <a name="game-over">Game Over</a>
+
+![Game Over](assets/readme/game-over.png "Game Over")
+
+After 5 rounds are played, the game ends, displays the score and the winner. The winner can then save his score in the leaderboard.
+
+### <a name="updated-leaderboard">Updated Leaderboard</a>
+
+![Leaderboard](assets/readme/leaderboard2.png "Leaderboard")
+
+After the winner has entered his name the leaderboard will be updated and the best 15 players will be listed.
