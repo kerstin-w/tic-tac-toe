@@ -1,5 +1,5 @@
 import random
-import os
+from os import system, name
 import time
 import datetime
 import gspread
@@ -311,7 +311,12 @@ class Game:
         """
         Clear terminal
         """
-        os.system("clear")
+        # for windows
+        if name == "nt":
+            _ = system("cls")
+        # for mac and linux
+        else:
+            _ = system("clear")
 
     def game_over(self):
         """
@@ -331,21 +336,21 @@ class Game:
             score = self.score_player1
         else:
             score = max(self.score_player1, self.score_player2)
-        name = input(
+        winner_name = input(
             Colors.Y
             + f"Make your mark on our leaderboard. \
             \n{winner} enter your name:\n"
         )
-        self.update_score_worksheet(name, score)
+        self.update_score_worksheet(winner_name, score)
         self.display_leaderboard()
 
-    def update_score_worksheet(self, name, score):
+    def update_score_worksheet(self, winner_name, score):
         """
         Update a new row in the Tic Tact Toe worksheet
         This updates a new row with the name, score and date.
         """
         typewriter("\nUpdating Leaderboard...")
-        leaderboard.append_row([name, score, today_date])
+        leaderboard.append_row([winner_name, score, today_date])
         typewriter("\nLeaderboard Update successful.\n")
 
     def display_leaderboard(self):
