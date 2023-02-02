@@ -4,11 +4,16 @@
 
 Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack development course. It utilises pure Python3 and a collection of libraries to expand on the functionality of the project. The game runs in the Code Institute mock terminal on Heroku. The main goal of the game is to place three of the marks in a horizontal, vertical or diagonal row.
 
-[Live Project Here](https://tic-tac-toe-p3.herokuapp.com/)
 
 ![Mockup](assets/readme/mockup.png "Mockup")
 
+# Live Project
+
+[View live project here](https://tic-tac-toe-p3.herokuapp.com/)
+
 ## README Table Content
+
+---
 
 - [Introduction](#introduction)
 - [User Experience](#ux)
@@ -383,7 +388,7 @@ The [JSHint JS Validator](https://jshint.com/) return three warnings. Since JS w
 
 - Styling Heroku:
 
-I tried to change the appearance of the Heroku app with CSS to display the terminal centrally. Therefore I wrapped the body in a Div and used flexbox, which in the end disrupted the entire styling. After taking a closer look at the class selector, I could determine that by using `margin: 0 auto` on `xterm-screen` and `xterm-viewport` the terminal could be centralized.
+  I tried to change the appearance of the Heroku app with CSS to display the terminal centrally. Therefore I wrapped the body in a Div and used flexbox, which in the end disrupted the entire styling. After taking a closer look at the class selector, I could determine that by using `margin: 0 auto` on `xterm-screen` and `xterm-viewport` the terminal could be centralized.
 
 ### Unsolved Bugs
 
