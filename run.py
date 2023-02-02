@@ -127,7 +127,7 @@ class Game:
     """Represents a Tic-Tac-Toe game."""
 
     MAX_GRID_CELLS = 9
-    NO_OF_ROUNDS = 1
+    NO_OF_ROUNDS = 5
 
     def __init__(self):
         """Initilize 2 Players and one Board."""
@@ -135,7 +135,7 @@ class Game:
         self.player2 = Colors.R + "O"
         self.board = Board()
         self.is_computer_player = False
-        self.round_count = 5
+        self.round_count = 1
         self.score_player1 = 0
         self.score_player2 = 0
 
