@@ -6,6 +6,8 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 
 [Live Project Here]()
 
+![Mockup](assets/readme/mockup.png "Mockup")
+
 ## README Table Content
 
 - [Introduction](#introduction)
