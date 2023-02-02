@@ -317,7 +317,8 @@ class Game:
         self.display_score()
         print(game_art.GAME_OVER)
         if self.score_player1 == self.score_player2:
-            return print(Colors.Y + "It is a tie. Thank you for playing!")
+            print(Colors.Y + "It is a tie. Thank you for playing!")
+            return
         print(f"{winner}  W O N! C O N G R A TU L A T I O N S!\n")
         if self.is_computer_player:
             score = self.score_player1
@@ -358,29 +359,36 @@ class Game:
             )
 
 
-def running_game():
+def display_menu():
     """
     User is asked wether to play the game, or see the leaderboard.
+    """
+    typewriter(
+        "Would you like to start the game (g), or see the leaderboard (l)?\n")
+    return input_with_validation(
+        prompt="\nEnter (g/l):\n", valid_options={"g", "l"}
+    )
+
+
+def running_game():
+    """
     If the user choses to play the game, the game will start.
     Otherwise the leaderoard will be displayed with the option
     to start the game or not.
     """
     print(game_art.LOGO)
-    typewriter(
-        "Would you like to start the game (g), or see the leaderboard (l)?\n"
-    )
-    display_leaderboard_or_game = input_with_validation(
-        prompt="\nEnter (g/l):\n", valid_options={"g", "l"}
-    )
-    if display_leaderboard_or_game == "g":
-        return Game().start_game()
+    menu_choice = display_menu()
+    if menu_choice == "g":
+        Game().start_game()
+        return
     Game().display_leaderboard()
     typewriter("\nWould you like to start the game now?\n")
     start_game = input_with_validation(
         prompt="\nEnter (y/n):\n", valid_options={"y", "n"}
     )
     if start_game == "y":
-        return Game().start_game()
+        Game().start_game()
+        return
     print("Thank You. Maybe next time!")
 
 
