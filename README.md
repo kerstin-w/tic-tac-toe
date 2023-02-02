@@ -381,6 +381,10 @@ The [JSHint JS Validator](https://jshint.com/) return three warnings. Since JS w
 
   The way the code was originally structured, the `game_over` function was called multiple times, which resulted in the user being asked to enter his name multiple times to save the final score. I changed the reset_game function and added an if statement which checks if the five rounds have been completed and then calls the `game_over` function.
 
+- Styling Heroku:
+
+I tried to change the appearance of the Heroku app with CSS to display the terminal centrally. Therefore I wrapped the body in a Div and used flexbox, which in the end disrupted the entire styling. After taking a closer look at the class selector, I could determine that by using `margin: 0 auto` on `xterm-screen` and `xterm-viewport` the terminal could be centralized.
+
 ### Unsolved Bugs
 
 - Clear Termin:
@@ -388,11 +392,8 @@ The [JSHint JS Validator](https://jshint.com/) return three warnings. Since JS w
 In Gitpod my function to clear the terminal had worked wonderfully where in Heroku only the latest lines were cleared. I have tried several [variations](https://github.com/kerstin-w/tic-tac-toe/commit/ab5b63b36911f9a1cf5b1880819cc001690b3363) (found on [GeeksForGeeks](https://www.geeksforgeeks.org/clear-screen-python/) and [DelfStack](https://www.delftstack.com/howto/python/python-clear-console/#use-the-os-module-to-clear-interpreter-console-in-python)) of this function. 
 I removed the function from the `class Board` into `game_extras.py` as I thought it might be a problem that this function was called in the class. 
 Then I deleted the function and accessed `os.system('clear')` directly. I thought according to the KISS principle, calling another function is taking alonger way and this might be the solution.
-Unfortunately, none of my efforts led to the desired result. Since this is not an essential feature, I decided to remove this function if it does not work 100% well.
+Unfortunately, none of my efforts led to the desired result. Since this is not an essential feature, I decided to remove this function, if it does not work 100% well.
 
-- Styling Heroku:
-
-I tried to change the appearance of the Heroku app with CSS to display the terminal centrally. However, this did not work and since I did not want to mess further with the template, this remains unsolved.
 
 ## <a name="deployment">Deployment</a>
 
