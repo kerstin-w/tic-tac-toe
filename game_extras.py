@@ -1,5 +1,6 @@
 import sys
 import time
+from os import system, name
 from colorama import init, Fore
 init(autoreset=True)
 
@@ -46,3 +47,15 @@ def input_with_validation(prompt, valid_options):
             continue
         break
     return user_input
+
+
+def clear():
+    """
+    Clear terminal
+    """
+    # for windows
+    if name == "nt":
+        _ = system("cls")
+    # for mac and linux
+    else:
+        _ = system("clear")

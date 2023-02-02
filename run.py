@@ -1,5 +1,4 @@
 import random
-from os import system, name
 import time
 import datetime
 import gspread
@@ -7,6 +6,7 @@ from google.oauth2.service_account import Credentials
 from game_extras import GameColours as Colors
 from game_extras import typewriter
 from game_extras import input_with_validation
+from game_extras import clear
 import game_art
 
 
@@ -294,7 +294,7 @@ class Game:
         Once all 5 rounds are played return game_over.
         """
         no_of_rounds = self.NO_OF_ROUNDS
-        self.clear()
+        clear()
         if self.round_count == no_of_rounds:
             return self.game_over()
         self.round_count += 1
@@ -306,17 +306,6 @@ class Game:
         player = self.random_first_player()
         self.play_game(player)
         return None
-
-    def clear(self):
-        """
-        Clear terminal
-        """
-        # for windows
-        if name == "nt":
-            _ = system("cls")
-        # for mac and linux
-        else:
-            _ = system("clear")
 
     def game_over(self):
         """
