@@ -4,7 +4,7 @@
 
 Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack development course. It utilises pure Python3 and a collection of libraries to expand on the functionality of the project. The game runs in the Code Institute mock terminal on Heroku. The main goal of the game is to place three of the marks in a horizontal, vertical or diagonal row.
 
-[Live Project Here]()
+[Live Project Here](https://tic-tac-toe-p3.herokuapp.com/)
 
 ![Mockup](assets/readme/mockup.png "Mockup")
 
@@ -45,3 +45,11 @@ Tic Tac Toe is a game built as Portfolio Project 3 for Code Institute Full-stack
 ### <a name="colours">Colours</a>
 
 - The colours in the game are supplied by the Python Colorama Model
+
+## <a name="logic">Logic</a>
+
+---
+
+### <a name="flowchart">Flowchart</a>
+
+![Flowchart](assets/readme/flowchart.png "Flowchart")
