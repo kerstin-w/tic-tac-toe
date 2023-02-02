@@ -1,5 +1,4 @@
 import random
-import os
 import time
 import datetime
 import gspread
@@ -294,7 +293,6 @@ class Game:
         Once all 5 rounds are played return game_over.
         """
         no_of_rounds = self.NO_OF_ROUNDS
-        os.system("clear")
         if self.round_count == no_of_rounds:
             return self.game_over()
         self.round_count += 1
