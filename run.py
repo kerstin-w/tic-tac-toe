@@ -124,13 +124,19 @@ class Board:
 
 
 class Game:
-    """Represents a Tic-Tac-Toe game."""
+    """
+    Represents the complete gameplay
+    """
 
+    # Consts to be used for the game
     MAX_GRID_CELLS = 9
     NO_OF_ROUNDS = 5
 
     def __init__(self):
-        """Initilize 2 Players and one Board."""
+        """
+        Initilize 2 Player, the Board, wether computer is a palyer,
+        the round round and player scores.
+        """
         self.player1 = Colors.G + "X"
         self.player2 = Colors.R + "O"
         self.board = Board()
@@ -262,7 +268,7 @@ class Game:
 
     def update_score(self, player):
         """
-        Update Player score once a round is won
+        Update Player score once a round is won.
         """
         if player == self.player1:
             self.score_player1 += 1
@@ -307,7 +313,12 @@ class Game:
 
     def game_over(self):
         """
-        End of the game. Show final result.
+        End of the game.
+        Compare the scores of Player 1 and Player 2 to determine the winner.
+        If the scores are tied, display a tie. Players who only play against
+        the Computer can enter their name and update the leadboard.
+        For players playing against a human, winner is asked to enter Name and
+        update the leadboard.
         """
         winner = (
             self.player1
@@ -334,8 +345,8 @@ class Game:
 
     def update_score_worksheet(self, winner_name, score):
         """
-        Update a new row in the Tic Tact Toe worksheet
-        This updates a new row with the name, score and date.
+        Add a new row in the Tic Tac Toe worksheet
+        with the name, score and date.
         """
         typewriter("\nUpdating Leaderboard...")
         leaderboard.append_row([winner_name, score, today_date])
@@ -343,7 +354,9 @@ class Game:
 
     def display_leaderboard(self):
         """
-        Displays to the players the 15 best scores
+        From the score worksheet, the scores are sorted from
+        highest to lowest and the top 15 scores, or less, are
+        displayed.
         """
         score_sheet = data[1:]
 
@@ -364,7 +377,8 @@ def display_menu():
     User is asked wether to play the game, or see the leaderboard.
     """
     typewriter(
-        "Would you like to start the game (g), or see the leaderboard (l)?\n")
+        "Would you like to start the game (g), or see the leaderboard (l)?\n"
+    )
     return input_with_validation(
         prompt="\nEnter (g/l):\n", valid_options={"g", "l"}
     )
