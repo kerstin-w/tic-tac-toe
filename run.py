@@ -26,8 +26,6 @@ SHEET = GSPREAD_CLIENT.open("tictactoe")
 
 leaderboard = SHEET.worksheet("leaderboard")
 
-data = leaderboard.get_all_values()
-
 
 class Board:
     """Represents the board for the Tic-Tac-Toe game."""
@@ -358,7 +356,7 @@ class Game:
         highest to lowest and the top 15 scores, or less, are
         displayed.
         """
-        score_sheet = data[1:]
+        score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
 
         sorted_data = sorted(
             score_sheet, key=lambda x: int(x[1]), reverse=True
