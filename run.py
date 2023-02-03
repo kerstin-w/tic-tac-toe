@@ -71,7 +71,7 @@ class Board:
 
     def is_field_free(self, selected_position):
         """
-        Check if the choosen field is not occupied
+        Check if the choosen field is not occupied.
         """
         row, column = self.get_row_column_index(selected_position)
         if not isinstance(self.board[row][column], int):
@@ -81,7 +81,6 @@ class Board:
     def check_winner(self, player_symbol):
         """
         Check for a winner in rows, columns and diagonals.
-        Also check if the grid is full and there is a tie.
         """
         # check in rows
         for row in self.board:
