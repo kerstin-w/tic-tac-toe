@@ -328,7 +328,7 @@ class Game:
         if self.score_player1 == self.score_player2:
             print(Colors.Y + "It is a tie. Thank you for playing!")
             return
-        print(f"{winner}  W O N! C O N G R A TU L A T I O N S!\n")
+        print(f"{winner}  W O N! C O N G R A T U L A T I O N S!\n")
         if self.is_computer_player:
             score = self.score_player1
         else:
