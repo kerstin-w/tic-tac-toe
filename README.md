@@ -440,9 +440,9 @@ This project uses the services available at [Heroku] (https://www.heroku.com). H
 7. Click "Reveal Config Vars".
 8. Enter `PORT` into the Key box and `8000` into the Value box and click the Add button.
 9. Next enter `CREDS` into the Key box and credentials (ie. from `creds.json`) into the Value box.
-10. Scroll down to the Buildpack section click Add Buildpack select python and click Save Changes.
+10. Scroll down to the Buildpack section click Add Buildpack select Python and click "Save Changes".
 11. From the same menu select Node.js and click Save Changes.
-12. Naviaget to the "Deploy" tab and select the desired deployment method.
+12. Navigate to the "Deploy" tab and select the desired deployment method.
 13. Select "Enable Automatic Deploy" to rebuild your project automatically every time you push a new commit.
 14. Select "Manual Deployment" to manually deploy from your desired branch on will.
 
