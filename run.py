@@ -333,13 +333,26 @@ class Game:
             score = self.score_player1
         else:
             score = max(self.score_player1, self.score_player2)
-        winner_name = input(
-            Colors.Y
-            + f"Make your mark on our leaderboard. \
-            \n{winner} enter your name:\n"
-        )
+        winner_name = self.get_winner_name(winner)
         self.update_score_worksheet(winner_name, score)
         self.display_leaderboard()
+
+    def get_winner_name(self, winner):
+        """
+        Ask game winner for their name. If the input is empty,
+        ask for the name again.
+        """
+        while True:
+            selected_winner_name = input(
+                Colors.Y
+                + f"Make your mark on our leaderboard. \
+                \n{winner} enter your name:\n"
+            )
+            if len(selected_winner_name) == 0:
+                print(Colors.M + "This is not a valid name!\n")
+                continue
+            break
+        return selected_winner_name
 
     def update_score_worksheet(self, winner_name, score):
         """
