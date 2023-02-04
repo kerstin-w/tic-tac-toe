@@ -347,8 +347,17 @@ class Game:
         with the name, score and date.
         """
         typewriter("\nUpdating Leaderboard...")
-        leaderboard.append_row([winner_name, score, today_date])
-        typewriter("\nLeaderboard Update successful.\n")
+        try:
+            leaderboard.append_row([winner_name, score, today_date])
+            typewriter("\nLeaderboard Update successful.\n")
+        except (
+            gspread.exceptions.GSpreadException,
+            gspread.exceptions.APIError,
+            gspread.exceptions.WorksheetNotFound,
+        ):
+            print(
+                "\nWe're sorry. Something went wrong. Score was not saved."
+            )
 
     def display_leaderboard(self):
         """
@@ -356,17 +365,28 @@ class Game:
         highest to lowest and the top 15 scores, or less, are
         displayed.
         """
-        score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
+        try:
+            score_sheet = SHEET.worksheet("leaderboard").get_all_values()[1:]
 
-        sorted_data = sorted(
-            score_sheet, key=lambda x: int(x[1]), reverse=True
-        )
-        count = min(len(sorted_data), 15)
-        print(game_art.LEADERBOARD)
+            sorted_data = sorted(
+                score_sheet, key=lambda x: int(x[1]), reverse=True
+            )
+            count = min(len(sorted_data), 15)
+            print(game_art.LEADERBOARD)
 
-        for i, col in enumerate(sorted_data[:count], start=1):
+            for i, col in enumerate(sorted_data[:count], start=1):
+                print(
+                    f"{i: >2}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(
+                        *col
+                    )
+                )
+        except (
+            gspread.exceptions.GSpreadException,
+            gspread.exceptions.APIError,
+            gspread.exceptions.WorksheetNotFound,
+        ):
             print(
-                f"{i: >2}{col[0]: >20}{col[1]: >20}{col[2]: >20}".format(*col)
+                "\nSomething went wrong. Leaderboard can't be shown."
             )
 
 
