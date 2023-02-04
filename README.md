@@ -458,3 +458,4 @@ This project uses the services available at [Heroku] (https://www.heroku.com). H
 - [Using Set](https://www.geeksforgeeks.org/sets-in-python/) Helped to better understand the functionality of set
 - [Colorama](https://linuxhint.com/colorama-python/) This source assisted me to implement colorama and provided me with information about the features of colorama.
 - [Classes in Python](https://www.programiz.com/python-programming/class) This source gave me a good understanding on using classes in python.
+- [Gspread API error handling](https://medium.com/hacktive-devs/gspread-automate-google-sheet-with-python-dc1fa7c65c21) This source provided me with information about Gspread and API error handling. [Docs Gspread](https://docs.gspread.org/en/latest/api/exceptions.html) List the various exceptions for Gspread. 
