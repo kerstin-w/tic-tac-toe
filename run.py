@@ -128,7 +128,7 @@ class Game:
 
     # Consts to be used for the game
     MAX_GRID_CELLS = 9
-    NO_OF_ROUNDS = 5
+    NO_OF_ROUNDS = 1
 
     def __init__(self):
         """
@@ -361,7 +361,8 @@ class Game:
         """
         typewriter("\nUpdating Leaderboard...")
         try:
-            leaderboard.append_row([winner_name, score, today_date])
+            leaderboard.append_row(
+                [winner_name.capitalize(), score, today_date])
             typewriter("\nLeaderboard Update successful.\n")
         except (
             gspread.exceptions.GSpreadException,
