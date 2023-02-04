@@ -76,6 +76,7 @@ NEXT_ROUND = (
 
 """
 )
+
 # Leaderboard to show after game is finished
 LEADERBOARD = (
     C.Y

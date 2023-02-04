@@ -28,10 +28,14 @@ leaderboard = SHEET.worksheet("leaderboard")
 
 
 class Board:
-    """Represents the board for the Tic-Tac-Toe game."""
+    """
+    Represents the board for the Tic-Tac-Toe game.
+    """
 
     def __init__(self):
-        """Initializes a new board."""
+        """
+        Initializes a new board.
+        """
         self.board = [[i + j for i in range(1, 4)] for j in range(0, 9, 3)]
 
     def display_board(self):
